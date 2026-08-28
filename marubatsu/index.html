@@ -7,33 +7,190 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="○×ゲーム">
-  <meta name="description" content="ノートにえんぴつで書いたような、みんなで遊べる○×ゲーム">
+  <meta name="description" content="ノートにえんぴつで書いたような、むずかしさを選べる○×ゲーム">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <title>○×ゲーム やろうよ！</title>
   <style>
     :root{--paper:#fbf7e9;--pencil:#4d4a45;--pencil-soft:#716b63;--rule:#bfd8ec;--margin:#e7b0a6;--blue:#6f92bc;--panel:rgba(255,252,241,.78)}
     *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#e9e5dc;color:var(--pencil)}body{font-family:"Hiragino Maru Gothic ProN","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}button,a{font:inherit;color:inherit}
-    .app{min-height:100dvh;max-width:760px;margin:0 auto;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,var(--rule) 35px,transparent 36px);position:relative;padding:max(22px,env(safe-area-inset-top)) 18px max(28px,env(safe-area-inset-bottom)) 48px;overflow:hidden}
+    .app{min-height:100dvh;max-width:760px;margin:0 auto;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,var(--rule) 35px,transparent 36px);position:relative;padding:max(20px,env(safe-area-inset-top)) 18px max(28px,env(safe-area-inset-bottom)) 48px;overflow:hidden}
     .app:before{content:"";position:absolute;left:30px;top:0;bottom:0;width:1.5px;background:var(--margin);opacity:.8}.content{position:relative;z-index:1}.back{display:inline-block;text-decoration:none;font-weight:800;font-size:14px;background:rgba(255,255,255,.45);border:1px solid #a59d91;border-radius:999px;padding:8px 12px}
-    .title{text-align:center;font-size:clamp(28px,7vw,42px);font-weight:800;letter-spacing:.08em;margin:15px 0 4px;transform:rotate(-.8deg);text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:4px;text-underline-offset:10px}.subtitle{text-align:center;margin:20px 0 0;font-size:clamp(16px,4vw,21px);letter-spacing:.08em;transform:rotate(.4deg)}
-    .modes{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 0}.mode-btn,.restart{min-height:48px;border:1.8px solid #8a8276;background:rgba(255,255,255,.52);border-radius:999px;padding:9px 16px;font-weight:800;box-shadow:1.5px 2px 0 rgba(78,75,70,.14);cursor:pointer}.mode-btn[aria-pressed="true"]{background:#e8eef5;border-color:#6f8195}.mode-btn:focus-visible,.restart:focus-visible,.cell:focus-visible,.back:focus-visible{outline:3px solid #668db9;outline-offset:3px}
-    .board-wrap{width:min(86vw,470px);margin:24px auto 0}.board{width:100%;aspect-ratio:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);position:relative;padding:7px}.gridline{position:absolute;background:var(--pencil);opacity:.88;border-radius:999px;pointer-events:none}.v1{left:33.8%;top:2%;width:3.5px;height:96%;transform:rotate(.9deg)}.v2{left:66.2%;top:2%;width:3.5px;height:96%;transform:rotate(-.7deg)}.h1{left:2%;top:33.8%;height:3.5px;width:96%;transform:rotate(-.45deg)}.h2{left:2%;top:66.2%;height:3.5px;width:96%;transform:rotate(.55deg)}
-    .cell{position:relative;z-index:2;border:0;background:transparent;min-width:0;min-height:78px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:8px;cursor:pointer}.cell:disabled{cursor:default}.mark{width:72%;height:72%;overflow:visible}.mark path{fill:none;stroke:var(--pencil);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-    .status{max-width:530px;margin:19px auto 0;background:var(--panel);border:1.2px solid #d9cfbd;border-radius:13px;text-align:center;padding:11px 14px 10px;transform:rotate(-.15deg)}.status-main{font-size:clamp(18px,4.5vw,24px);font-weight:800;letter-spacing:.05em}.status-sub{margin-top:3px;color:var(--pencil-soft);font-size:14px;font-weight:600}.score{display:flex;justify-content:center;flex-wrap:wrap;gap:9px 20px;margin-top:16px;font-size:14px;font-weight:700}.score span{background:rgba(255,255,255,.35);padding:2px 7px;border-radius:8px}.actions{display:flex;justify-content:center;margin-top:17px}.restart{min-width:165px;background:#e7edf3;border-color:#77889b;font-size:17px}.footer-note{text-align:center;margin:19px auto 0;max-width:520px;font-size:13px;color:#686159;font-weight:600;line-height:1.7}.scribble{animation:pop .26s ease-out}@keyframes pop{from{transform:scale(.78);opacity:.3}to{transform:scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.scribble{animation:none}}@media(max-width:390px){.app{padding-left:40px;padding-right:10px}.app:before{left:25px}.board-wrap{width:min(91vw,430px)}.mode-btn{padding-inline:12px;font-size:14px}}
+    .title{text-align:center;font-size:clamp(27px,7vw,42px);font-weight:800;letter-spacing:.08em;margin:13px 0 4px;transform:rotate(-.8deg);text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:4px;text-underline-offset:10px}.subtitle{text-align:center;margin:20px 0 0;font-size:clamp(16px,4vw,21px);letter-spacing:.06em;transform:rotate(.3deg);font-weight:700}
+    .level-panel{max-width:560px;margin:16px auto 0;text-align:center}.level-label{font-size:14px;font-weight:900;color:var(--pencil-soft);margin-bottom:7px}.levels,.modes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.level-btn,.mode-btn,.restart{min-height:46px;border:1.8px solid #8a8276;background:rgba(255,255,255,.54);border-radius:999px;padding:8px 14px;font-weight:800;box-shadow:1.5px 2px 0 rgba(78,75,70,.14);cursor:pointer;touch-action:manipulation}.level-btn[aria-pressed="true"],.mode-btn[aria-pressed="true"]{background:#e8eef5;border-color:#6f8195;box-shadow:inset 0 0 0 1px rgba(111,129,149,.15),1.5px 2px 0 rgba(78,75,70,.12)}.level-btn:focus-visible,.mode-btn:focus-visible,.restart:focus-visible,.cell:focus-visible,.back:focus-visible{outline:3px solid #668db9;outline-offset:3px}.level-note{margin-top:7px;font-size:13px;font-weight:700;color:#716b63}.modes{margin:14px 0 0}
+    .board-wrap{width:min(88vw,510px);margin:18px auto 0}.board{width:100%;aspect-ratio:1;display:grid;position:relative;padding:7px}.gridline{position:absolute;background:var(--pencil);opacity:.86;border-radius:999px;pointer-events:none;z-index:1}.gridline.v{top:2%;height:96%;width:3.5px;transform:translateX(-50%) rotate(.55deg)}.gridline.h{left:2%;width:96%;height:3.5px;transform:translateY(-50%) rotate(-.35deg)}
+    .cell{position:relative;z-index:2;border:0;background:transparent;min-width:0;min-height:0;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:5px;cursor:pointer;touch-action:manipulation}.cell:disabled{cursor:default}.mark{width:72%;height:72%;overflow:visible}.mark path{fill:none;stroke:var(--pencil);stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.win-stroke{display:none;position:absolute;height:5px;background:var(--pencil);border-radius:999px;z-index:4;transform-origin:0 50%;opacity:.72;pointer-events:none;box-shadow:0 1px 0 rgba(255,255,255,.45)}
+    .status{max-width:530px;margin:15px auto 0;background:var(--panel);border:1.2px solid #d9cfbd;border-radius:13px;text-align:center;padding:10px 14px 9px;transform:rotate(-.15deg)}.status-main{font-size:clamp(18px,4.5vw,24px);font-weight:800;letter-spacing:.05em}.status-sub{margin-top:3px;color:var(--pencil-soft);font-size:14px;font-weight:600}.score{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:13px;font-size:14px;font-weight:700}.score span{background:rgba(255,255,255,.35);padding:2px 7px;border-radius:8px}.actions{display:flex;justify-content:center;margin-top:14px}.restart{min-width:165px;background:#e7edf3;border-color:#77889b;font-size:17px}.footer-note{text-align:center;margin:14px auto 0;max-width:520px;font-size:13px;color:#686159;font-weight:600;line-height:1.7}.scribble{animation:pop .24s ease-out}@keyframes pop{from{transform:scale(.78);opacity:.3}to{transform:scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.scribble{animation:none}}@media(max-width:390px){.app{padding-left:40px;padding-right:10px}.app:before{left:25px}.board-wrap{width:min(91vw,460px)}.level-btn,.mode-btn{font-size:13px;padding-inline:11px}}
   </style>
 </head>
 <body>
 <main class="app" aria-label="ノート風○×ゲーム"><div class="content">
   <a class="back" href="../">← もどる</a>
-  <h1 class="title">○×ゲーム やろうよ！</h1><p class="subtitle">3つ ならべたら かち！</p>
-  <div class="modes" aria-label="あそびかた"><button class="mode-btn" id="friendBtn" type="button" aria-pressed="true">ふたりで</button><button class="mode-btn" id="cpuBtn" type="button" aria-pressed="false">コンピューターと</button></div>
-  <section class="board-wrap" aria-label="ゲーム盤"><div class="board" role="grid" aria-label="3かける3の○×ゲーム盤"><div class="gridline v1"></div><div class="gridline v2"></div><div class="gridline h1"></div><div class="gridline h2"></div><button class="cell" type="button" data-index="0" aria-label="左上"></button><button class="cell" type="button" data-index="1" aria-label="上まんなか"></button><button class="cell" type="button" data-index="2" aria-label="右上"></button><button class="cell" type="button" data-index="3" aria-label="左まんなか"></button><button class="cell" type="button" data-index="4" aria-label="まんなか"></button><button class="cell" type="button" data-index="5" aria-label="右まんなか"></button><button class="cell" type="button" data-index="6" aria-label="左下"></button><button class="cell" type="button" data-index="7" aria-label="下まんなか"></button><button class="cell" type="button" data-index="8" aria-label="右下"></button></div></section>
+  <h1 class="title">○×ゲーム やろうよ！</h1>
+  <p class="subtitle" id="ruleText">3×3・3つ ならべたら かち！</p>
+
+  <section class="level-panel" aria-label="むずかしさ">
+    <div class="level-label">むずかしさ</div>
+    <div class="levels">
+      <button class="level-btn" type="button" data-level="1" aria-pressed="true">① かんたん</button>
+      <button class="level-btn" type="button" data-level="2" aria-pressed="false">② ふつう</button>
+      <button class="level-btn" type="button" data-level="3" aria-pressed="false">③ むずかしい</button>
+    </div>
+    <div class="level-note" id="levelNote">3×3のマスで、3つならべよう</div>
+  </section>
+
+  <div class="modes" aria-label="あそびかた">
+    <button class="mode-btn" id="friendBtn" type="button" aria-pressed="true">ふたりで</button>
+    <button class="mode-btn" id="cpuBtn" type="button" aria-pressed="false">コンピューターと</button>
+  </div>
+
+  <section class="board-wrap" aria-label="ゲーム盤">
+    <div class="board" id="board" role="grid" aria-label="3かける3の○×ゲーム盤"></div>
+  </section>
+
   <section class="status" aria-live="polite"><div class="status-main" id="statusMain">○ の ばんだよ</div><div class="status-sub" id="statusSub">すきなマスを タッチしてね</div></section>
   <div class="score" aria-label="スコア"><span>○ <b id="scoreO">0</b>しょう</span><span>ひきわけ <b id="scoreD">0</b></span><span>× <b id="scoreX">0</b>しょう</span></div>
-  <div class="actions"><button class="restart" id="restartBtn" type="button">↻ もういちど</button></div><p class="footer-note" id="footerNote">こうたいで ○と×を かいてね。</p>
+  <div class="actions"><button class="restart" id="restartBtn" type="button">↻ もういちど</button></div>
+  <p class="footer-note" id="footerNote">こうたいで ○と×を かいてね。</p>
 </div></main>
 <script>
-(()=>{const cells=[...document.querySelectorAll('.cell')],friendBtn=document.getElementById('friendBtn'),cpuBtn=document.getElementById('cpuBtn'),restartBtn=document.getElementById('restartBtn'),statusMain=document.getElementById('statusMain'),statusSub=document.getElementById('statusSub'),footerNote=document.getElementById('footerNote'),scoreO=document.getElementById('scoreO'),scoreX=document.getElementById('scoreX'),scoreD=document.getElementById('scoreD');const labels=['左上','上まんなか','右上','左まんなか','まんなか','右まんなか','左下','下まんなか','右下'];const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];let board=Array(9).fill(''),turn='O',mode='friend',gameOver=false,thinking=false;const scores={O:0,X:0,D:0};function svg(mark,i){const w=i%3;if(mark==='O')return `<svg class="mark scribble" viewBox="0 0 100 100" aria-hidden="true"><path d="M ${50+w} 11 C 26 8,11 26,12 51 C 13 76,29 91,52 89 C 77 88,91 72,89 48 C 88 24,73 11,${50+w} 11 Z"/><path opacity=".22" d="M 51 14 C 29 12,16 29,17 51 C 18 72,32 86,52 85"/></svg>`;return `<svg class="mark scribble" viewBox="0 0 100 100" aria-hidden="true"><path d="M ${18+(i%2)} 17 C 37 36,61 61,82 83"/><path d="M 82 18 C 63 37,39 61,18 82"/><path opacity=".20" d="M 21 20 C 40 39,59 58,79 79"/></svg>`}function winner(mark){return wins.find(line=>line.every(i=>board[i]===mark))||null}function render(){cells.forEach((c,i)=>{c.innerHTML=board[i]?svg(board[i],i):'';c.disabled=gameOver||thinking||!!board[i];c.setAttribute('aria-label',labels[i]+(board[i]?`：${board[i]==='O'?'まる':'ばつ'}`:''))})}function updateScores(){scoreO.textContent=scores.O;scoreX.textContent=scores.X;scoreD.textContent=scores.D}function finish(mark){if(winner(mark)){gameOver=true;scores[mark]++;updateScores();statusMain.textContent=`${mark==='O'?'○':'×'} が 3つ ならんだ！`;statusSub.textContent='やったー！ いい しょうぶだったね';footerNote.textContent='「もういちど」を おして つぎの しょうぶ！';render();return true}if(board.every(Boolean)){gameOver=true;scores.D++;updateScores();statusMain.textContent='ひきわけ！';statusSub.textContent='どっちも 3つ ならばなかったね';footerNote.textContent='いい しょうぶ！ もういちど やってみよう。';render();return true}return false}function next(){turn=turn==='O'?'X':'O';statusMain.textContent=`${turn==='O'?'○':'×'} の ばんだよ`;statusSub.textContent='あいてのマークも よくみてね';render()}function cpuChoice(){const empty=board.map((v,i)=>v?null:i).filter(i=>i!==null);for(const i of empty){board[i]='X';const ok=!!winner('X');board[i]='';if(ok)return i}for(const i of empty){board[i]='O';const ok=!!winner('O');board[i]='';if(ok)return i}if(board[4]==='')return 4;const corners=[0,2,6,8].filter(i=>board[i]==='');if(corners.length)return corners[Math.floor(Math.random()*corners.length)];return empty[Math.floor(Math.random()*empty.length)]}function cpuMove(){thinking=true;statusMain.textContent='× が かんがえちゅう…';statusSub.textContent='ちょっと まってね';render();setTimeout(()=>{const move=cpuChoice();if(Number.isInteger(move))board[move]='X';thinking=false;if(!finish('X')){turn='O';statusMain.textContent='○ の ばんだよ';statusSub.textContent='どこに おこうかな？';render()}},430)}function play(i){if(gameOver||thinking||board[i])return;board[i]=turn;render();if(finish(turn))return;if(mode==='cpu'&&turn==='O'){turn='X';cpuMove()}else next()}function reset(){board=Array(9).fill('');turn='O';gameOver=false;thinking=false;statusMain.textContent='○ の ばんだよ';statusSub.textContent='すきなマスを タッチしてね';footerNote.textContent=mode==='friend'?'こうたいで ○と×を かいてね。':'あなたは ○。コンピューターは × だよ。';render()}function setMode(m){mode=m;friendBtn.setAttribute('aria-pressed',String(m==='friend'));cpuBtn.setAttribute('aria-pressed',String(m==='cpu'));reset()}cells.forEach(c=>c.addEventListener('click',()=>play(Number(c.dataset.index))));friendBtn.addEventListener('click',()=>setMode('friend'));cpuBtn.addEventListener('click',()=>setMode('cpu'));restartBtn.addEventListener('click',reset);render();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));})();
+(()=>{
+  const boardEl=document.getElementById('board');
+  const levelBtns=[...document.querySelectorAll('.level-btn')];
+  const friendBtn=document.getElementById('friendBtn'),cpuBtn=document.getElementById('cpuBtn'),restartBtn=document.getElementById('restartBtn');
+  const statusMain=document.getElementById('statusMain'),statusSub=document.getElementById('statusSub'),footerNote=document.getElementById('footerNote');
+  const scoreO=document.getElementById('scoreO'),scoreX=document.getElementById('scoreX'),scoreD=document.getElementById('scoreD');
+  const ruleText=document.getElementById('ruleText'),levelNote=document.getElementById('levelNote');
+  const configs={1:{size:3,target:3,name:'かんたん'},2:{size:4,target:3,name:'ふつう'},3:{size:5,target:4,name:'むずかしい'}};
+  let level=1,size=3,target=3,lines=[],board=[],cells=[],turn='O',mode='friend',gameOver=false,thinking=false,winningLine=null;
+  const scores={O:0,X:0,D:0};
+
+  function makeLines(n,k){
+    const out=[];
+    for(let r=0;r<n;r++)for(let c=0;c<=n-k;c++)out.push(Array.from({length:k},(_,j)=>r*n+c+j));
+    for(let c=0;c<n;c++)for(let r=0;r<=n-k;r++)out.push(Array.from({length:k},(_,j)=>(r+j)*n+c));
+    for(let r=0;r<=n-k;r++)for(let c=0;c<=n-k;c++)out.push(Array.from({length:k},(_,j)=>(r+j)*n+c+j));
+    for(let r=0;r<=n-k;r++)for(let c=k-1;c<n;c++)out.push(Array.from({length:k},(_,j)=>(r+j)*n+c-j));
+    return out;
+  }
+
+  function markSvg(mark,i){
+    const w=i%3;
+    if(mark==='O')return `<svg class="mark scribble" viewBox="0 0 100 100" aria-hidden="true"><path d="M ${50+w} 11 C 26 8,11 26,12 51 C 13 76,29 91,52 89 C 77 88,91 72,89 48 C 88 24,73 11,${50+w} 11 Z"/><path opacity=".20" d="M 51 14 C 29 12,16 29,17 51 C 18 72,32 86,52 85"/></svg>`;
+    return `<svg class="mark scribble" viewBox="0 0 100 100" aria-hidden="true"><path d="M ${18+(i%2)} 17 C 37 36,61 61,82 83"/><path d="M 82 18 C 63 37,39 61,18 82"/><path opacity=".18" d="M 21 20 C 40 39,59 58,79 79"/></svg>`;
+  }
+
+  function buildBoard(){
+    boardEl.innerHTML='';
+    boardEl.style.gridTemplateColumns=`repeat(${size},1fr)`;
+    boardEl.style.gridTemplateRows=`repeat(${size},1fr)`;
+    for(let j=1;j<size;j++){
+      const v=document.createElement('div');v.className='gridline v';v.style.left=`${j*100/size}%`;v.style.transform=`translateX(-50%) rotate(${j%2?0.55:-0.45}deg)`;boardEl.appendChild(v);
+      const h=document.createElement('div');h.className='gridline h';h.style.top=`${j*100/size}%`;h.style.transform=`translateY(-50%) rotate(${j%2?-0.35:0.45}deg)`;boardEl.appendChild(h);
+    }
+    for(let i=0;i<size*size;i++){
+      const b=document.createElement('button');b.type='button';b.className='cell';b.dataset.index=String(i);b.addEventListener('click',()=>play(i));boardEl.appendChild(b);
+    }
+    const stroke=document.createElement('div');stroke.className='win-stroke';stroke.id='winStroke';boardEl.appendChild(stroke);
+    cells=[...boardEl.querySelectorAll('.cell')];
+    boardEl.setAttribute('aria-label',`${size}かける${size}の○×ゲーム盤`);
+  }
+
+  function getWinner(mark){return lines.find(line=>line.every(i=>board[i]===mark))||null;}
+
+  function drawWinningLine(){
+    const stroke=document.getElementById('winStroke');
+    if(!stroke||!winningLine){if(stroke)stroke.style.display='none';return;}
+    const first=cells[winningLine[0]],last=cells[winningLine[winningLine.length-1]];
+    if(!first||!last)return;
+    const base=boardEl.getBoundingClientRect(),a=first.getBoundingClientRect(),z=last.getBoundingClientRect();
+    const x1=a.left-base.left+a.width/2,y1=a.top-base.top+a.height/2,x2=z.left-base.left+z.width/2,y2=z.top-base.top+z.height/2;
+    const dx=x2-x1,dy=y2-y1;
+    stroke.style.display='block';stroke.style.left=`${x1}px`;stroke.style.top=`${y1}px`;stroke.style.width=`${Math.hypot(dx,dy)}px`;stroke.style.transform=`translateY(-50%) rotate(${Math.atan2(dy,dx)}rad)`;
+  }
+
+  function render(){
+    cells.forEach((c,i)=>{
+      c.innerHTML=board[i]?markSvg(board[i],i):'';
+      c.disabled=gameOver||thinking||!!board[i];
+      const r=Math.floor(i/size)+1,col=i%size+1;
+      c.setAttribute('aria-label',`${r}ぎょう ${col}れつ${board[i]?`：${board[i]==='O'?'まる':'ばつ'}`:''}`);
+    });
+    if(winningLine)requestAnimationFrame(drawWinningLine);else{const s=document.getElementById('winStroke');if(s)s.style.display='none';}
+  }
+
+  function updateScores(){scoreO.textContent=scores.O;scoreX.textContent=scores.X;scoreD.textContent=scores.D;}
+  function clearScores(){scores.O=0;scores.X=0;scores.D=0;updateScores();}
+
+  function finish(mark){
+    const line=getWinner(mark);
+    if(line){
+      winningLine=line;gameOver=true;scores[mark]++;updateScores();
+      statusMain.textContent=`${mark==='O'?'○':'×'} が ${target}つ ならんだ！`;
+      statusSub.textContent='やったー！ いい しょうぶだったね';footerNote.textContent='そろったところに えんぴつの線がひかれたよ。';render();return true;
+    }
+    if(board.every(Boolean)){
+      gameOver=true;scores.D++;updateScores();statusMain.textContent='ひきわけ！';statusSub.textContent='どっちも ならばなかったね';footerNote.textContent='いい しょうぶ！ もういちど やってみよう。';render();return true;
+    }
+    return false;
+  }
+
+  function nextTurn(){turn=turn==='O'?'X':'O';statusMain.textContent=`${turn==='O'?'○':'×'} の ばんだよ`;statusSub.textContent='あいてのマークも よくみてね';render();}
+
+  function cpuChoice(){
+    const empty=board.map((v,i)=>v?null:i).filter(i=>i!==null);
+    for(const i of empty){board[i]='X';const ok=!!getWinner('X');board[i]='';if(ok)return i;}
+    for(const i of empty){board[i]='O';const ok=!!getWinner('O');board[i]='';if(ok)return i;}
+    const center=(size-1)/2;
+    let best=empty[0],bestScore=-Infinity;
+    for(const i of empty){
+      const r=Math.floor(i/size),c=i%size;let s=(size-Math.abs(r-center)-Math.abs(c-center))*1.2;
+      for(const line of lines){
+        if(!line.includes(i))continue;
+        let own=0,opp=0;
+        for(const p of line){if(p===i)continue;if(board[p]==='X')own++;else if(board[p]==='O')opp++;}
+        if(own&&opp)s+=0.2;else if(own)s+=Math.pow(4,own);else if(opp)s+=Math.pow(3.2,opp);else s+=1;
+      }
+      s+=Math.random()*.45;
+      if(s>bestScore){bestScore=s;best=i;}
+    }
+    return best;
+  }
+
+  function cpuMove(){
+    thinking=true;statusMain.textContent='× が かんがえちゅう…';statusSub.textContent='ちょっと まってね';render();
+    setTimeout(()=>{const move=cpuChoice();if(Number.isInteger(move))board[move]='X';thinking=false;if(!finish('X')){turn='O';statusMain.textContent='○ の ばんだよ';statusSub.textContent='どこに おこうかな？';render();}},430);
+  }
+
+  function play(i){
+    if(gameOver||thinking||board[i])return;
+    board[i]=turn;render();if(finish(turn))return;
+    if(mode==='cpu'&&turn==='O'){turn='X';cpuMove();}else nextTurn();
+  }
+
+  function resetRound(){
+    board=Array(size*size).fill('');turn='O';gameOver=false;thinking=false;winningLine=null;
+    statusMain.textContent='○ の ばんだよ';statusSub.textContent='すきなマスを タッチしてね';
+    footerNote.textContent=mode==='friend'?'こうたいで ○と×を かいてね。':'あなたは ○。コンピューターは × だよ。';render();
+  }
+
+  function setMode(m){
+    mode=m;friendBtn.setAttribute('aria-pressed',String(m==='friend'));cpuBtn.setAttribute('aria-pressed',String(m==='cpu'));clearScores();resetRound();
+  }
+
+  function setLevel(next){
+    level=next;const cfg=configs[level];size=cfg.size;target=cfg.target;lines=makeLines(size,target);
+    levelBtns.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.level)===level)));
+    ruleText.textContent=`${size}×${size}・${target}つ ならべたら かち！`;
+    levelNote.textContent=`${size}×${size}のマスで、${target}つならべよう`;
+    buildBoard();clearScores();resetRound();
+  }
+
+  levelBtns.forEach(b=>b.addEventListener('click',()=>setLevel(Number(b.dataset.level))));
+  friendBtn.addEventListener('click',()=>setMode('friend'));cpuBtn.addEventListener('click',()=>setMode('cpu'));restartBtn.addEventListener('click',resetRound);
+  window.addEventListener('resize',()=>{if(winningLine)drawWinningLine();});
+  setLevel(1);
+  if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+})();
 </script>
 </body></html>

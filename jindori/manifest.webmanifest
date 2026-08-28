@@ -1,0 +1,12 @@
+{
+  "name": "点つなぎ 陣取りゲーム",
+  "short_name": "点つなぎ陣取り",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7e9",
+  "theme_color": "#fbf7e9",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

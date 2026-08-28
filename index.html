@@ -4,36 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbf7e9">
-  <title>○×ゲーム やろうよ！</title>
+  <title>ノートであそぼう！</title>
   <style>
     :root{--paper:#fbf7e9;--pencil:#4d4a45;--rule:#bfd8ec;--margin:#e7b0a6;--blue:#6f92bc}
     *{box-sizing:border-box}body{margin:0;background:#e9e5dc;color:var(--pencil);font-family:"Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif}
     main{min-height:100vh;max-width:760px;margin:auto;padding:34px 22px 60px 52px;position:relative;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,var(--rule) 35px,transparent 36px)}
     main:before{content:"";position:absolute;left:31px;top:0;bottom:0;width:1.5px;background:var(--margin)}
     .inner{position:relative}.title{text-align:center;font-size:clamp(30px,7vw,46px);margin:8px 0 10px;letter-spacing:.06em;transform:rotate(-.6deg)}
-    .sub{text-align:center;font-weight:700;color:#6a645d;margin-bottom:34px}.card{display:block;text-decoration:none;color:inherit;max-width:520px;margin:0 auto;background:rgba(255,255,255,.55);border:2px solid #8b8377;border-radius:18px;padding:22px;box-shadow:2px 3px 0 rgba(70,65,60,.15);transform:rotate(.2deg)}
-    .game-title{font-size:28px;font-weight:900;margin:0 0 9px}.board{width:150px;aspect-ratio:1;margin:18px auto;display:grid;grid-template-columns:repeat(3,1fr);position:relative}.board:before,.board:after{content:"";position:absolute;top:0;bottom:0;width:3px;background:var(--pencil)}.board:before{left:33%}.board:after{left:66%}.h{position:absolute;left:0;right:0;height:3px;background:var(--pencil)}.h1{top:33%}.h2{top:66%}.cell{display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800}.cta{text-align:center;margin-top:15px;font-weight:900;color:#476d98}.note{text-align:center;margin:32px auto 0;max-width:560px;font-size:14px;line-height:1.8;color:#625d56}
-    @media(max-width:390px){main{padding-left:40px;padding-right:12px}main:before{left:25px}.card{padding:18px}}
+    .sub{text-align:center;font-weight:700;color:#6a645d;margin-bottom:26px}.grid{display:grid;gap:18px;max-width:560px;margin:0 auto}.card{display:block;text-decoration:none;color:inherit;background:rgba(255,255,255,.55);border:2px solid #8b8377;border-radius:18px;padding:20px;box-shadow:2px 3px 0 rgba(70,65,60,.15);transform:rotate(.15deg)}
+    .game-title{font-size:26px;font-weight:900;margin:0 0 7px}.desc{line-height:1.7;font-weight:650}.cta{text-align:center;margin-top:14px;font-weight:900;color:#476d98}.preview{width:150px;aspect-ratio:1;margin:16px auto;position:relative}.ttt{display:grid;grid-template-columns:repeat(3,1fr)}.ttt:before,.ttt:after{content:"";position:absolute;top:0;bottom:0;width:3px;background:var(--pencil)}.ttt:before{left:33%}.ttt:after{left:66%}.h{position:absolute;left:0;right:0;height:3px;background:var(--pencil)}.h1{top:33%}.h2{top:66%}.cell{display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800}.dots{display:grid;grid-template-columns:repeat(4,1fr);place-items:center}.dot{width:8px;height:8px;border-radius:50%;background:var(--pencil)}.line{position:absolute;background:var(--pencil);border-radius:999px}.l1{left:13%;top:17%;width:25%;height:3px}.l2{left:38%;top:17%;width:3px;height:25%}.l3{left:38%;top:42%;width:25%;height:3px}.l4{left:63%;top:17%;width:3px;height:25%}.mark{position:absolute;left:46%;top:22%;font-size:26px;font-weight:900}.note{text-align:center;margin:28px auto 0;max-width:560px;font-size:14px;line-height:1.8;color:#625d56}
+    @media(max-width:390px){main{padding-left:40px;padding-right:12px}main:before{left:25px}.card{padding:17px}.game-title{font-size:23px}}
   </style>
 </head>
 <body>
-<main>
-  <div class="inner">
-    <h1 class="title">○×ゲーム やろうよ！</h1>
-    <p class="sub">ノートにえんぴつで書いたみたいな、○×ゲーム</p>
-    <a class="card" href="./marubatsu/" aria-label="ノートで○×ゲームをあそぶ">
-      <h2 class="game-title">ノートで ○×ゲーム</h2>
-      <p>学校で友だちと遊ぶような、シンプルな○×ゲームです。ふたりでも、コンピューターとも遊べます。</p>
-      <div class="board" aria-hidden="true">
-        <span class="h h1"></span><span class="h h2"></span>
-        <span class="cell">○</span><span class="cell"></span><span class="cell">×</span>
-        <span class="cell"></span><span class="cell">○</span><span class="cell"></span>
-        <span class="cell">×</span><span class="cell"></span><span class="cell"></span>
-      </div>
-      <div class="cta">▶ ゲームをはじめる</div>
+<main><div class="inner">
+  <h1 class="title">ノートであそぼう！</h1>
+  <p class="sub">雨の日の教室や、おうちで。指でタッチして遊べるミニゲーム</p>
+  <div class="grid">
+    <a class="card" href="./marubatsu/">
+      <h2 class="game-title">○×ゲーム やろうよ！</h2>
+      <div class="desc">ノートにえんぴつで書いたみたいな○×ゲーム。ふたりでも、コンピューターとも遊べます。</div>
+      <div class="preview ttt" aria-hidden="true"><span class="h h1"></span><span class="h h2"></span><span class="cell">○</span><span></span><span class="cell">×</span><span></span><span class="cell">○</span><span></span><span class="cell">×</span></div>
+      <div class="cta">▶ あそんでみる</div>
     </a>
-    <p class="note">学校でも、おうちでも。友だちや家族といっしょに遊んでね。</p>
+    <a class="card" href="./jindori/">
+      <h2 class="game-title">点つなぎ 陣取りゲーム</h2>
+      <div class="desc">点と点のあいだをタッチして線を引こう。四角を完成させたら自分の陣地！</div>
+      <div class="preview dots" aria-hidden="true"><span class="line l1"></span><span class="line l2"></span><span class="line l3"></span><span class="line l4"></span><span class="mark">○</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="cta">▶ あそんでみる</div>
+    </a>
   </div>
-</main>
+  <p class="note">これから「絵しりとり」など、ノートでできる遊びも少しずつ追加していきます。</p>
+</div></main>
 </body>
 </html>

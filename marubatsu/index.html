@@ -19,8 +19,15 @@
     .title{text-align:center;font-size:clamp(27px,7vw,42px);font-weight:800;letter-spacing:.08em;margin:13px 0 4px;transform:rotate(-.8deg);text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:4px;text-underline-offset:10px}.subtitle{text-align:center;margin:20px 0 0;font-size:clamp(16px,4vw,21px);letter-spacing:.06em;transform:rotate(.3deg);font-weight:700}
     .level-panel{max-width:560px;margin:16px auto 0;text-align:center}.level-label{font-size:14px;font-weight:900;color:var(--pencil-soft);margin-bottom:7px}.levels,.modes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.level-btn,.mode-btn,.restart{min-height:46px;border:1.8px solid #8a8276;background:rgba(255,255,255,.54);border-radius:999px;padding:8px 14px;font-weight:800;box-shadow:1.5px 2px 0 rgba(78,75,70,.14);cursor:pointer;touch-action:manipulation}.level-btn[aria-pressed="true"],.mode-btn[aria-pressed="true"]{background:#e8eef5;border-color:#6f8195;box-shadow:inset 0 0 0 1px rgba(111,129,149,.15),1.5px 2px 0 rgba(78,75,70,.12)}.level-btn:focus-visible,.mode-btn:focus-visible,.restart:focus-visible,.cell:focus-visible,.back:focus-visible{outline:3px solid #668db9;outline-offset:3px}.level-note{margin-top:7px;font-size:13px;font-weight:700;color:#716b63}.modes{margin:14px 0 0}
     .board-wrap{width:min(88vw,510px);margin:18px auto 0}.board{width:100%;aspect-ratio:1;display:grid;position:relative;padding:7px}.gridline{position:absolute;background:var(--pencil);opacity:.86;border-radius:999px;pointer-events:none;z-index:1}.gridline.v{top:2%;height:96%;width:3.5px;transform:translateX(-50%) rotate(.55deg)}.gridline.h{left:2%;width:96%;height:3.5px;transform:translateY(-50%) rotate(-.35deg)}
-    .cell{position:relative;z-index:2;border:0;background:transparent;min-width:0;min-height:0;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:5px;cursor:pointer;touch-action:manipulation}.cell:disabled{cursor:default}.mark{width:72%;height:72%;overflow:visible}.mark path{fill:none;stroke:var(--pencil);stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.win-stroke{display:none;position:absolute;height:5px;background:var(--pencil);border-radius:999px;z-index:4;transform-origin:0 50%;opacity:.72;pointer-events:none;box-shadow:0 1px 0 rgba(255,255,255,.45)}
-    .status{max-width:530px;margin:15px auto 0;background:var(--panel);border:1.2px solid #d9cfbd;border-radius:13px;text-align:center;padding:10px 14px 9px;transform:rotate(-.15deg)}.status-main{font-size:clamp(18px,4.5vw,24px);font-weight:800;letter-spacing:.05em}.status-sub{margin-top:3px;color:var(--pencil-soft);font-size:14px;font-weight:600}.score{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:13px;font-size:14px;font-weight:700}.score span{background:rgba(255,255,255,.35);padding:2px 7px;border-radius:8px}.actions{display:flex;justify-content:center;margin-top:14px}.restart{min-width:165px;background:#e7edf3;border-color:#77889b;font-size:17px}.footer-note{text-align:center;margin:14px auto 0;max-width:520px;font-size:13px;color:#686159;font-weight:600;line-height:1.7}.scribble{animation:pop .24s ease-out}@keyframes pop{from{transform:scale(.78);opacity:.3}to{transform:scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.scribble{animation:none}}@media(max-width:390px){.app{padding-left:40px;padding-right:10px}.app:before{left:25px}.board-wrap{width:min(91vw,460px)}.level-btn,.mode-btn{font-size:13px;padding-inline:11px}}
+    .cell{position:relative;z-index:2;border:0;background:transparent;min-width:0;min-height:0;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:5px;cursor:pointer;touch-action:manipulation}.cell:disabled{cursor:default}.mark{width:72%;height:72%;overflow:visible}.mark path{fill:none;stroke:var(--pencil);stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .win-stroke{display:none;position:absolute;height:5px;width:var(--line-length,0px);background:var(--pencil);border-radius:999px;z-index:4;transform-origin:0 50%;opacity:.76;pointer-events:none;box-shadow:0 1px 0 rgba(255,255,255,.45);will-change:width}
+    .win-stroke:after{content:"";position:absolute;left:0;right:0;top:1.5px;height:1.5px;background:rgba(255,255,255,.18);border-radius:999px;transform:rotate(.35deg)}
+    .win-stroke.draw{animation:pencilSweep .72s cubic-bezier(.18,.72,.25,1) forwards}
+    .status{max-width:530px;margin:15px auto 0;background:var(--panel);border:1.2px solid #d9cfbd;border-radius:13px;text-align:center;padding:10px 14px 9px;transform:rotate(-.15deg)}.status-main{font-size:clamp(18px,4.5vw,24px);font-weight:800;letter-spacing:.05em}.status-sub{margin-top:3px;color:var(--pencil-soft);font-size:14px;font-weight:600}.score{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:13px;font-size:14px;font-weight:700}.score span{background:rgba(255,255,255,.35);padding:2px 7px;border-radius:8px}.actions{display:flex;justify-content:center;margin-top:14px}.restart{min-width:165px;background:#e7edf3;border-color:#77889b;font-size:17px}.footer-note{text-align:center;margin:14px auto 0;max-width:520px;font-size:13px;color:#686159;font-weight:600;line-height:1.7}.scribble{animation:pop .24s ease-out}
+    @keyframes pop{from{transform:scale(.78);opacity:.3}to{transform:scale(1);opacity:1}}
+    @keyframes pencilSweep{from{width:0}to{width:var(--line-length)}}
+    @media(prefers-reduced-motion:reduce){.scribble{animation:none}.win-stroke.draw{animation:none;width:var(--line-length)}}
+    @media(max-width:390px){.app{padding-left:40px;padding-right:10px}.app:before{left:25px}.board-wrap{width:min(91vw,460px)}.level-btn,.mode-btn{font-size:13px;padding-inline:11px}}
   </style>
 </head>
 <body>
@@ -62,7 +69,7 @@
   const scoreO=document.getElementById('scoreO'),scoreX=document.getElementById('scoreX'),scoreD=document.getElementById('scoreD');
   const ruleText=document.getElementById('ruleText'),levelNote=document.getElementById('levelNote');
   const configs={1:{size:3,target:3,name:'かんたん'},2:{size:4,target:3,name:'ふつう'},3:{size:5,target:4,name:'むずかしい'}};
-  let level=1,size=3,target=3,lines=[],board=[],cells=[],turn='O',mode='friend',gameOver=false,thinking=false,winningLine=null;
+  let level=1,size=3,target=3,lines=[],board=[],cells=[],turn='O',mode='friend',gameOver=false,thinking=false,winningLine=null,lineShouldAnimate=false;
   const scores={O:0,X:0,D:0};
 
   function makeLines(n,k){
@@ -105,8 +112,22 @@
     if(!first||!last)return;
     const base=boardEl.getBoundingClientRect(),a=first.getBoundingClientRect(),z=last.getBoundingClientRect();
     const x1=a.left-base.left+a.width/2,y1=a.top-base.top+a.height/2,x2=z.left-base.left+z.width/2,y2=z.top-base.top+z.height/2;
-    const dx=x2-x1,dy=y2-y1;
-    stroke.style.display='block';stroke.style.left=`${x1}px`;stroke.style.top=`${y1}px`;stroke.style.width=`${Math.hypot(dx,dy)}px`;stroke.style.transform=`translateY(-50%) rotate(${Math.atan2(dy,dx)}rad)`;
+    const dx=x2-x1,dy=y2-y1,length=Math.hypot(dx,dy),angle=Math.atan2(dy,dx);
+    stroke.style.display='block';
+    stroke.style.left=`${x1}px`;stroke.style.top=`${y1}px`;
+    stroke.style.setProperty('--line-length',`${length}px`);
+    stroke.style.transform=`translateY(-50%) rotate(${angle}rad)`;
+    if(lineShouldAnimate){
+      stroke.classList.remove('draw');
+      stroke.style.width='0px';
+      void stroke.offsetWidth;
+      stroke.style.width='';
+      stroke.classList.add('draw');
+      lineShouldAnimate=false;
+    }else{
+      stroke.classList.remove('draw');
+      stroke.style.width=`${length}px`;
+    }
   }
 
   function render(){
@@ -125,9 +146,9 @@
   function finish(mark){
     const line=getWinner(mark);
     if(line){
-      winningLine=line;gameOver=true;scores[mark]++;updateScores();
+      winningLine=line;lineShouldAnimate=true;gameOver=true;scores[mark]++;updateScores();
       statusMain.textContent=`${mark==='O'?'○':'×'} が ${target}つ ならんだ！`;
-      statusSub.textContent='やったー！ いい しょうぶだったね';footerNote.textContent='そろったところに えんぴつの線がひかれたよ。';render();return true;
+      statusSub.textContent='やったー！ えんぴつの線が スーッ！';footerNote.textContent='そろったところに えんぴつで線をひいたよ。';render();return true;
     }
     if(board.every(Boolean)){
       gameOver=true;scores.D++;updateScores();statusMain.textContent='ひきわけ！';statusSub.textContent='どっちも ならばなかったね';footerNote.textContent='いい しょうぶ！ もういちど やってみよう。';render();return true;
@@ -169,7 +190,7 @@
   }
 
   function resetRound(){
-    board=Array(size*size).fill('');turn='O';gameOver=false;thinking=false;winningLine=null;
+    board=Array(size*size).fill('');turn='O';gameOver=false;thinking=false;winningLine=null;lineShouldAnimate=false;
     statusMain.textContent='○ の ばんだよ';statusSub.textContent='すきなマスを タッチしてね';
     footerNote.textContent=mode==='friend'?'こうたいで ○と×を かいてね。':'あなたは ○。コンピューターは × だよ。';render();
   }

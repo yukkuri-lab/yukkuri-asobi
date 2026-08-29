@@ -9,8 +9,7 @@
     :root{--paper:#fbf7e9;--pencil:#4d4a45;--soft:#6a645d;--rule:#bfd8ec;--margin:#e7b0a6;--blue:#6f92bc}
     *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#e9e5dc;color:var(--pencil)}body{font-family:"Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
     main{min-height:100dvh;max-width:760px;margin:auto;padding:max(38px,env(safe-area-inset-top)) 22px max(56px,env(safe-area-inset-bottom)) 52px;position:relative;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,var(--rule) 35px,transparent 36px)}
-    main:before{content:"";position:absolute;left:31px;top:0;bottom:0;width:1.5px;background:var(--margin)}.inner{position:relative}
-    .title{text-align:center;font-size:clamp(32px,8vw,48px);margin:10px 0 8px;letter-spacing:.06em;transform:rotate(-.6deg)}
+    main:before{content:"";position:absolute;left:31px;top:0;bottom:0;width:1.5px;background:var(--margin)}.inner{position:relative}.title{text-align:center;font-size:clamp(32px,8vw,48px);margin:10px 0 8px;letter-spacing:.06em;transform:rotate(-.6deg)}
     .sub{text-align:center;font-weight:800;color:var(--soft);font-size:clamp(15px,4vw,19px);margin:0 auto 34px;line-height:1.7}.choose{text-align:center;font-size:15px;font-weight:900;color:var(--soft);margin-bottom:12px}
     .games{display:grid;gap:14px;max-width:500px;margin:0 auto}.game{display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;color:inherit;min-height:88px;padding:16px 18px;background:rgba(255,255,255,.58);border:2px solid #8b8377;border-radius:18px;box-shadow:2px 3px 0 rgba(70,65,60,.13);touch-action:manipulation}.game:active{transform:translateY(1px)}
     .game-text{min-width:0}.game-title{display:block;font-size:clamp(21px,5vw,27px);font-weight:900;line-height:1.3}.game-note{display:block;margin-top:5px;font-size:13px;font-weight:700;color:var(--soft);line-height:1.5}.arrow{flex:none;font-size:28px;font-weight:900;color:#5279a3}
@@ -26,8 +25,9 @@
   <nav class="games" aria-label="ゲームをえらぶ">
     <a class="game" href="./marubatsu/"><span class="game-text"><span class="game-title">○×ゲーム</span><span class="game-note">まずはコンピューターと練習。おともだちとも遊べるよ。</span></span><span class="arrow" aria-hidden="true">›</span></a>
     <a class="game" href="./jindori/"><span class="game-text"><span class="game-title">点つなぎ 陣取りゲーム</span><span class="game-note">まずはコンピューターと練習。おともだちとも遊べるよ。</span></span><span class="arrow" aria-hidden="true">›</span></a>
+    <a class="game" href="./eshiritori/"><span class="game-text"><span class="game-title">絵しりとり</span><span class="game-note">文字を使わず、絵だけでしりとり。ひとりで練習も、おともだちとも遊べるよ。</span></span><span class="arrow" aria-hidden="true">›</span></a>
   </nav>
-  <p class="coming">これから「絵しりとり」など、ノートでできる遊びも少しずつ追加していきます。</p>
+  <p class="coming">ノートでできる遊びを、これからも少しずつ追加していきます。</p>
   <p class="foot">ゲームを選ぶと、それぞれのゲーム専用ページが開きます。</p>
 </div></main>
 </body>

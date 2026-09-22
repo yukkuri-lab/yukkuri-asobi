@@ -20,7 +20,8 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--paper);color:var(--pencil)}
-body{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;font-weight:700;-webkit-tap-highlight-color:transparent;word-break:keep-all;overflow-wrap:anywhere;-webkit-user-select:none;user-select:none}
+body{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;font-weight:700;-webkit-tap-highlight-color:transparent;word-break:keep-all;overflow-wrap:anywhere;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input{-webkit-user-select:text;user-select:text}
 main{min-height:100dvh;max-width:760px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) 20px max(40px,env(safe-area-inset-bottom)) 48px;position:relative;
   background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 39px,var(--rule) 39px,var(--rule) 40px)}
 main:before{content:"";position:absolute;left:28px;top:0;bottom:0;width:2px;background:var(--margin)}
@@ -30,7 +31,7 @@ h1:focus,.q:focus{outline:none}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .pill{font-size:14px;border:2px solid var(--panel-border);border-radius:999px;padding:8px 12px;white-space:nowrap;background:var(--paper)}
 .q{font-size:24px;font-weight:900;margin:20px 0 12px;line-height:1.6}
-.hint{font-size:16px;color:var(--soft);margin:0 0 12px;line-height:1.7}
+.hint{font-size:16px;color:var(--pencil);margin:0 0 12px;line-height:1.7}
 .center{text-align:center}
 
 /* ボタン */
@@ -45,11 +46,11 @@ h1:focus,.q:focus{outline:none}
 .card.small{font-size:16px;min-height:64px}
 .card .face{font-size:48px;line-height:1}
 .btn{font-size:16px;font-weight:900;border:2px solid var(--soft);border-radius:999px;min-height:48px;padding:12px 20px}
-.btn.main{background:var(--pick-bg);border-color:var(--pick-border);font-size:24px;min-height:64px;padding:12px 40px;box-shadow:0 4px 0 var(--pick-border)}
-.btn.main:hover{background:var(--paper)}
+.btn.main{background:var(--paper);border-color:var(--pick-border);font-size:24px;min-height:64px;padding:12px 40px;box-shadow:0 4px 0 var(--pick-border)}
+.btn.main:hover{background:var(--pick-bg)}
 .btn.wide{width:100%}
-.link{font:inherit;font-size:14px;font-weight:700;color:var(--soft);background:none;border:none;padding:8px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
-.link:hover{color:var(--pencil)}
+.link{font:inherit;font-size:16px;font-weight:700;color:var(--pencil);background:none;border:none;padding:8px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.link:hover{text-decoration-thickness:3px}
 .link:active{transform:translateY(1px)}
 .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;align-items:center}
 .row.mid{justify-content:center}
@@ -77,7 +78,7 @@ h1:focus,.q:focus{outline:none}
 .say:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* おだい */
-.odai{border:2px solid var(--pick-border);border-radius:13px;padding:12px 20px;background:var(--pick-bg);margin:0 0 12px;animation:flip .45s ease-out}
+.odai{border:2px solid var(--pick-border);border-radius:13px;padding:12px 20px;background:var(--paper);margin:0 0 12px;animation:flip .45s ease-out}
 .odai.still{animation:none}
 .odai-label{font-size:13px}
 .odai-text{font-size:24px;font-weight:900;line-height:1.6;margin:0}
@@ -121,7 +122,7 @@ h1:focus,.q:focus{outline:none}
 .meter span.on{background:var(--pick-bg)}
 
 /* マップ */
-.hero{border:2px solid var(--pick-border);background:var(--pick-bg);border-radius:13px;padding:12px 20px;display:flex;align-items:center;gap:12px;margin:20px 0 12px}
+.hero{border:2px solid var(--pick-border);background:var(--paper);border-radius:13px;padding:12px 20px;display:flex;align-items:center;gap:12px;margin:20px 0 12px}
 .hero .ykw{width:96px;height:96px}
 .hero-text{flex:1;min-width:0}
 .hero-text .q{margin:0 0 8px}
@@ -149,7 +150,18 @@ h1:focus,.q:focus{outline:none}
 .mon.lock:hover{background:var(--paper)}
 .zukan-h{font-size:16px;margin:20px 0 0}
 
-details{margin-top:40px;font-size:14px;color:var(--soft);line-height:1.8}
+.mic{font-size:24px;min-height:88px;padding:12px 40px}
+.mic.on{background:var(--pick-bg);border-color:var(--pick-border);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.heard{min-height:40px;font-size:24px;font-weight:900;text-align:center;margin:12px 0;line-height:1.6}
+.typein{display:flex;gap:8px;margin-top:12px}
+.typein input{flex:1;min-width:0;font:inherit;font-size:24px;color:var(--pencil);background:var(--paper);border:2px solid var(--pick-border);border-radius:10px;padding:12px}
+.typein input:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.alt{margin-top:12px}
+[hidden]{display:none!important}
+.btn[aria-pressed="true"]{background:var(--pick-bg);border-color:var(--pick-border)}
+details{margin-top:40px;font-size:14px;color:var(--pencil);line-height:1.8}
+details .link{font-size:14px}
 summary{cursor:pointer;padding:8px 0}
 summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
@@ -298,8 +310,17 @@ function stageHTML(code,text,big=false){
   return `<div class="stage ${big?'big':''}"><div class="ykw">${img(code,lookState(code))}</div>
     <div class="bubble" aria-live="polite"><span id="say">${esc(text)}</span><button class="say" id="sayBtn" type="button" aria-label="もういちど きく">🔊</button></div></div>`;
 }
-function bindSay(text){ on('#sayBtn',()=>speak(text)) }
-function setSay(text){ const s=app.querySelector('#say'); if(s) s.textContent=text; const b=app.querySelector('#sayBtn'); if(b) b.onclick=()=>speak(text); speak(text) }
+// 🔊は しつもんの あとに カードの ことばも よむ（よむのが にがてな 子のため）
+const plain=t=>String(t).replace(/[^\p{L}\p{N}ー 　]/gu,'').trim();
+function optionTexts(){ return [...app.querySelectorAll('.card,.tile')].map(b=>plain(b.textContent)).filter(Boolean) }
+function sayAll(text){ const o=optionTexts(); speak(text+(o.length?'。'+o.join('。'):'')) }
+function bindSay(text){ on('#sayBtn',()=>sayAll(text)) }
+function setSay(text){ const s=app.querySelector('#say'); if(s) s.textContent=text; const b=app.querySelector('#sayBtn'); if(b) b.onclick=()=>sayAll(text); speak(text) }
+// カードを ながおしすると、その ことばだけ よむ（おしても えらばれない）
+let lpTimer=null, lpFired=false;
+app.addEventListener('pointerdown',e=>{ const b=e.target.closest('.card,.tile'); if(!b) return; lpFired=false; clearTimeout(lpTimer); lpTimer=setTimeout(()=>{ lpFired=true; speak(plain(b.textContent)) },500) });
+['pointerup','pointercancel','pointerleave'].forEach(ev=>app.addEventListener(ev,()=>clearTimeout(lpTimer)));
+app.addEventListener('click',e=>{ if(lpFired&&e.target.closest('.card,.tile')){ e.stopPropagation(); e.preventDefault(); lpFired=false } },true);
 
 /* ================= タイトル ================= */
 function title(){
@@ -309,7 +330,25 @@ function title(){
       <div class="bubble">おなか すいた〜</div></div>
     <p class="hint center">ようかいは、きみの「きもちの ことば」が だいこうぶつ。</p>
     <div class="row mid"><button class="btn main" id="go" type="button">はじめる</button></div>`);
-  on('#go',()=>{ sfx('tap'); if(!S.plays) startPlay(0); else home() });
+  on('#go',()=>{ sfx('tap'); if(S.name===undefined) askName(); else if(!S.plays) startPlay(0); else home() });
+}
+const sensei=()=>S.name?`${S.name}せんせい`:'せんせい';
+function askName(){
+  const code=nextYokai(0), t='はじめまして！ ぼく、がっこうに いってみたいんだ。きみの なまえ、おしえて？';
+  show(`<div class="stage big"><div class="ykw">${img(code,lookState(code))}</div>
+      <div class="bubble"><span id="say">${esc(t)}</span></div></div>
+    <div class="typein"><input id="nm" type="text" maxlength="10" enterkeyhint="done" autocomplete="off" aria-label="きみの なまえ" placeholder="なまえ"><button class="btn main" id="ok" type="button">OK</button></div>
+    <p class="hint">おうちの人と いっしょに いれてね。ようかいが「○○せんせい」と よぶよ。</p>
+    <div class="row mid"><button class="link" id="later" type="button">あとで いれる</button></div>`);
+  speak(t);
+  const go=()=>{ const v=app.querySelector('#nm').value.trim(); if(!v) return; S.name=v; persist(); sfx('yay');
+    const hi=`${sensei()}！ よろしくね！ ぼくに いろいろ おしえてね`;
+    app.querySelector('#say').textContent=hi; speak(hi);
+    app.querySelector('.typein').remove(); app.querySelector('.hint').remove();
+    app.querySelector('.row.mid').innerHTML='<button class="btn main" id="start" type="button">はじめる</button>';
+    on('#start',()=>{ sfx('tap'); startPlay(0) }) };
+  on('#ok',go); app.querySelector('#nm').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.isComposing) go() });
+  on('#later',()=>{ S.name=''; persist(); sfx('tap'); startPlay(0) });
 }
 
 /* ================= ホーム ================= */
@@ -339,13 +378,23 @@ function home(){
     <details><summary>おうちの人へ</summary>
       <p>授業の終わりの「自問タイム」で感想を書く練習アプリです。1回30秒〜1分。</p>
       <p>書く型は4つ：<b>きょうは〜しました／（きもち）／なぜかと いうと〜からです／こんどは〜したいです</b></p>
-      <p>場所（もり→まち）が進むごとにヒントが減り、最後の「まち」では授業と同じように自分で書きます。まちがえても何も減りません。速さも競いません。</p>
-      <p>「きょうの じゅぎょうで やる」を選ぶと、その日の本当の授業で練習できます。記録はこの端末の中だけに残ります。</p>
+      <p><b>🎤 きょうの ことを おしえる</b>：学校を知らない妖怪に、その日のことを声で教えるモードです。答えが型に入って文になり、最後にそれをノートに写します。</p>
+      <p>「考える」と「書く」を分けるのがねらいです。</p>
+      <p>声の聞き取りが使えないブラウザでは、文字の枠が出ます（キーボードの🎤で話せます）。話した声は、端末の音声認識（Apple／Google）で文字になります。</p>
+      <p><b>🃏 おだいカードで あそぶ</b>：場所（もり→まち）が進むごとにヒントが減り、書く量が少しずつ増えます（なぞる→うつす→穴だけ書く→自分で書く）。</p>
+      <p>まちがえても何も減りません。速さも競いません。</p>
+      <p>なまえ（妖怪が「○○せんせい」と呼びます）：</p>
+      <div class="typein"><input id="nameIn" type="text" maxlength="10" autocomplete="off" aria-label="なまえ" value="${esc(S.name||'')}"><button class="btn" id="nameOk" type="button">かえる</button></div>
+      <p>かく ところ：<button class="btn" id="wScreen" type="button" aria-pressed="${!S.paper}">📱 がめんに ゆびで</button> <button class="btn" id="wPaper" type="button" aria-pressed="${!!S.paper}">📓 かみの ノート</button></p>
+      <p>記録はこの端末の中だけに残ります。</p>
       <p><button class="link" id="reset" type="button">きろくを はじめから にする</button></p>
     </details>`);
   on('#go',()=>{ sfx('tap'); startPlay(ai) });
   app.querySelectorAll('.area').forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.i; if(areaOpen(i)){ sfx('tap'); startPlay(i) } }));
   on('#zukan',()=>{ sfx('tap'); zukan() });
+  on('#nameOk',()=>{ S.name=app.querySelector('#nameIn').value.trim(); persist(); sfx('tap'); speak(`${sensei()}、よろしくね！`) });
+  on('#wScreen',()=>{ S.paper=false; persist(); home(); app.querySelector('details').open=true });
+  on('#wPaper',()=>{ S.paper=true; persist(); home(); app.querySelector('details').open=true });
   on('#reset',()=>{ if(confirm('あった ようかいの きろくを ぜんぶ けします。いいですか？')){ S=fresh(); persist(); title() } });
 }
 
@@ -353,13 +402,13 @@ function home(){
 let P=null, lastOdai=-1;
 function startPlay(ai){
   P={ai, mech:AREAS[ai].mech, code:nextYokai(ai), ctx:null, act:null, feel:null, detail:null, why:null, next:null, form:ai};
-  const hello = met(P.code) ? `${YOKAI[P.code]}だよ。おなか すいた〜！ きょうの はなし、きかせて！` : 'おなか すいた〜！ きょうの はなし、きかせて！';
+  const hello = met(P.code) ? `${sensei()}！ ${YOKAI[P.code]}だよ。おなか すいた〜！ きょうの はなし、きかせて！` : `${sensei()}、おなか すいた〜！ きょうの はなし、きかせて！`;
   show(`${topBar()}${stageHTML(P.code,hello,true)}
-    <div class="row mid"><button class="btn main" id="draw" type="button">🃏 おだいカードを ひく</button></div>
-    <div class="row mid"><button class="link" id="real" type="button">きょうの じゅぎょうで やる</button></div>`);
+    <div class="row mid"><button class="btn main" id="teach" type="button">🎤 きょうの ことを おしえる</button></div>
+    <div class="row mid"><button class="btn" id="draw" type="button">🃏 おだいカードで あそぶ</button></div>`);
   bindSay(hello); speak(hello);
+  on('#teach',()=>{ sfx('step'); teachStart() });
   on('#draw',()=>{ sfx('step'); P.ctx=drawOdai(); begin() });
-  on('#real',()=>{ sfx('tap'); pickSubject() });
 }
 function topBar(){ return `<div class="top"><button class="link" id="home" type="button">← もどる</button><span class="pill">${AREAS[P.ai].icon} ${esc(AREAS[P.ai].name)}</span></div>` }
 function bindTop(){ on('#home',()=>{ hush(); home() }) }
@@ -476,39 +525,61 @@ function koe(){
     <div class="row mid"><button class="btn main" id="said" type="button">📣 いえた！</button></div>
     <div class="row mid"><button class="link" id="help" type="button">💡 むずかしい ときは カードを だす</button></div>`);
   bindTop(); bindSay(t); speak(t);
-  on('#said',()=>eat(null));
+  on('#said',()=>{ sfx('tap'); writeSeq([{say:'いえたね！ 1ぎょうめだけ かいてみよう', guide:`きょうは、${when(P.ctx.s)} ＿＿＿。`, hint:P.act?`（${P.act}）`:'', r:'act'}],()=>eat(null)) });
   on('#help',()=>{ sfx('tap'); P.form=3; fill() });
 }
 
-/* ---- まち：かく ---- */
+/* ---- まち：かく（3ぎょう。「こんどは」は ボーナス） ---- */
 function kaku(){
-  const parts=[
-    {r:'act', g:`きょうは、${when(P.ctx.s)} 〜しました。`, t:'まず「きょうは」から かいてね'},
-    {r:'feel',g:'（きもち）。', t:'つぎは きもちを かいてね'},
-    {r:'why', g:'なぜかと いうと、〜からです。', t:'「なぜかと いうと」で わけを かいてね'},
-    {r:'next',g:'こんどは、〜したいです。', t:'さいごに「こんどは」を かいてね'},
+  const g=[
+    {say:'まず「きょうは」から かいてね', guide:`きょうは、${when(P.ctx.s)} 〜しました。`, r:'act'},
+    {say:'つぎは きもちを かいてね', guide:'（きもち）。', r:'feel'},
+    {say:'「なぜかと いうと」で わけを かいてね', guide:'なぜかと いうと、〜からです。', r:'why'},
   ];
-  let n=0, hide=false;
+  writeSeq(g, ok=>{
+    if(!ok) return eat(null,'てがみ');
+    const t='すごい！ 3ぎょう かけた！ 「こんどは」も かける？ かけたら おにぎり もう1こ！';
+    show(`${topBar()}${stageHTML(P.code,t)}
+      <div class="row mid"><button class="btn main" id="more" type="button">✏️ 「こんどは」も かく</button></div>
+      <div class="row mid"><button class="btn" id="enough" type="button">これで おわり</button></div>`);
+    bindTop(); bindSay(t); speak(t);
+    on('#more',()=>{ sfx('tap'); writeSeq([{say:'さいごに「こんどは」を かいてね', guide:'こんどは、〜したいです。', r:'next'}], ok2=>eat(null,'てがみ',ok2?2:1)) });
+    on('#enough',()=>{ sfx('tap'); eat(null,'てがみ') });
+  });
+}
+/* ---- かく：なぞる・うつす・あなだけ かく（S.paper なら かみの ノートに） ---- */
+function ladder(L){
+  if(P.ai===2) return [{say:'きもちの ことばを なぞってみよう', guide:L[1].t, r:'feel', trace:P.feel.w}];
+  if(P.ai===3) return [{say:'1ぎょうめを うつしてみよう', guide:L[0].t, r:'act'}];
+  if(P.ai===4) return [{say:'きもちの ぶんを うつしてみよう', guide:L[1].t, r:'feel'},
+                       {say:'「なぜかと いうと」の あなを かいてみよう', guide:'なぜかと いうと、＿＿＿からです。', hint:`（えらんだ わけ：${P.why}）`, r:'why'}];
+  return [];
+}
+function writeSeq(specs,next){
+  if(!specs.length) return next(true);
+  let n=0;
   const render=()=>{
-    const p=parts[n];
-    show(`${topBar()}${stageHTML(P.code,p.t)}${odaiHTML()}
-      <div class="dots" aria-label="${n+1}ぎょうめ">${parts.map((_,i)=>`<span class="dot ${i<=n?'on':''}"></span>`).join('')}</div>
-      <p class="guide"><span class="r-${p.r}" id="guide" ${hide?'hidden':''}>${esc(p.g)}</span></p>
-      <div class="pad"><canvas id="cv" aria-label="ゆびで かく ところ"></canvas></div>
-      <div class="row"><button class="btn" id="erase" type="button">🧽 けす</button><button class="btn" id="hide" type="button">${hide?'かたを みる':'かたを かくす'}</button></div>
-      <div class="row mid"><button class="btn main" id="ok" type="button">✏️ かけた！</button></div>`);
-    bindTop(); bindSay(p.t); speak(p.t);
-    const cv=app.querySelector('#cv'); pad(cv);
-    on('#erase',()=>pad(cv));
-    on('#hide',e=>{ hide=!hide; app.querySelector('#guide').hidden=hide; e.currentTarget.textContent=hide?'かたを みる':'かたを かくす' });
-    on('#ok',()=>{ sfx('step'); n++; if(n<parts.length) render(); else eat(null,'てがみ') });
+    const p=specs[n];
+    show(`${topBar()}${stageHTML(P.code,p.say)}
+      ${specs.length>1?`<div class="dots" aria-label="${n+1}つめ">${specs.map((_,i)=>`<span class="dot ${i<=n?'on':''}"></span>`).join('')}</div>`:''}
+      <p class="guide"><span class="r-${p.r}">${esc(p.guide)}</span></p>${p.hint?`<p class="hint">${esc(p.hint)}</p>`:''}
+      ${S.paper?'<p class="hint">ノートに かいたら おしてね</p>'
+        :'<div class="pad"><canvas id="cv" aria-label="ゆびで かく ところ"></canvas></div><div class="row"><button class="btn" id="erase" type="button">🧽 けす</button></div>'}
+      <div class="row mid"><button class="btn main" id="ok" type="button">${S.paper?'📓 かけた！':'✏️ かけた！'}</button></div>
+      <div class="row mid"><button class="link" id="skip" type="button">きょうは かかない</button></div>`);
+    bindTop(); bindSay(p.say); speak(p.say);
+    if(!S.paper){ const cv=app.querySelector('#cv'); pad(cv,p.trace); on('#erase',()=>pad(cv,p.trace)) }
+    on('#ok',()=>{ sfx('step'); n++; if(n<specs.length) render(); else next(true) });
+    on('#skip',()=>{ sfx('tap'); next(false) });
   };
   render();
 }
-function pad(cv){
+function pad(cv,trace){
   const r=cv.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
   cv.width=r.width*dpr; cv.height=r.height*dpr;
-  const g=cv.getContext('2d'); g.scale(dpr,dpr); g.lineWidth=4; g.lineCap='round'; g.lineJoin='round'; g.strokeStyle='#4D4A45';
+  const g=cv.getContext('2d'); g.scale(dpr,dpr);
+  if(trace){ const t=trace.replace(/ /g,''), size=Math.min(120,(r.width-24)/t.length); g.font=`900 ${size}px "Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif`; g.fillStyle='#D9CFBD'; g.textAlign='center'; g.textBaseline='middle'; g.fillText(t,r.width/2,r.height/2) }
+  g.lineWidth=4; g.lineCap='round'; g.lineJoin='round'; g.strokeStyle='#4D4A45';
   let d=false; const pt=e=>{ const b=cv.getBoundingClientRect(); return [e.clientX-b.left,e.clientY-b.top] };
   cv.onpointerdown=e=>{ d=true; cv.setPointerCapture(e.pointerId); const [x,y]=pt(e); g.beginPath(); g.moveTo(x,y); g.lineTo(x+.1,y+.1); g.stroke() };
   cv.onpointermove=e=>{ if(!d) return; const [x,y]=pt(e); g.lineTo(x,y); g.stroke() };
@@ -523,27 +594,27 @@ function serve(){
     <div class="row mid"><button class="link" id="model" type="button">🔊 さきに おてほんを きく</button></div>`);
   bindTop(); bindSay(t); speak(t);
   on('#model',()=>speak(text,false));
-  on('#read',()=>eat(L));
+  on('#read',()=>{ sfx('tap'); writeSeq(ladder(L),()=>eat(L)) });
 }
 
 /* ---- たべる → しょうたい ---- */
-function eat(L,kind='ごはん'){
+function eat(L,kind='ごはん',amt=1){
   hush(); sfx('chomp');
   const code=P.code, before=met(code), lookBefore=lookState(code);
-  S.fed[code]=(S.fed[code]||0)+1; S.plays++; if(P.feel) S.feel[P.feel.w]=(S.feel[P.feel.w]||0)+1;
+  S.fed[code]=(S.fed[code]||0)+amt; S.plays++; if(P.feel) S.feel[P.feel.w]=(S.feel[P.feel.w]||0)+1;
   if(!S.days.includes(today())) S.days.push(today()); S.days=S.days.slice(-60);
   const openedBefore=AREAS.map((_,i)=>areaOpen(i));
   persist();
   const nowMet=met(code), revealed=!before&&nowMet;
   const newArea=AREAS.findIndex((_,i)=>!openedBefore[i]&&areaOpen(i));
-  const yum=one(YUM);
+  const yum=amt>1?'ごちそうだ〜！ おにぎり 2こぶん！':one(YUM);
   // まず もぐもぐ
   show(`${topBar()}<div class="stage big"><div class="ykw">${img(code,lookBefore+' eat')}</div>
     <div class="bubble">${esc(yum)}</div></div>`);
   bindTop(); speak(yum);
   setTimeout(()=>{
     const left=need(code)-(S.fed[code]||0);
-    const msg = revealed ? `しょうたいは… ${YOKAI[code]}！ なかまに なった！`
+    const msg = revealed ? `しょうたいは… ${YOKAI[code]}！ ${sensei()}の なかまに なった！`
       : before ? `${YOKAI[code]}は まんぷく！ ありがとう！`
       : `だんだん みえてきた… あと ${left}かいで しょうたいが わかるよ`;
     show(`${topBar()}<div class="stage big"><div class="ykw">${img(code,lookState(code)+(revealed?' reveal':''))}</div>
@@ -559,6 +630,112 @@ function eat(L,kind='ごはん'){
     on('#goNew',()=>{ sfx('tap'); startPlay(newArea) });
     on('#toHome',()=>{ sfx('tap'); home() });
   }, 1300);
+}
+
+/* ================= おしえる（ようかいに きょうの ことを おしえる） ================= */
+// こえの ききとり（Safari・Chrome など）。つかえない ブラウザでは もじの わく（キーボードの🎤で はなせる）
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function listen(onPart,onEnd){
+  let fin=false, text='', r=null;
+  const end=err=>{ if(fin) return; fin=true; clearTimeout(tm); try{ if(navigator.audioSession) navigator.audioSession.type='playback' }catch(e){}; onEnd(text,err) };
+  try{ if(navigator.audioSession) navigator.audioSession.type='play-and-record' }catch(e){}
+  try{ r=new SR() }catch(e){ end('unavailable'); return null }
+  r.lang='ja-JP'; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
+  r.onresult=e=>{ text=[...e.results].map(x=>x[0].transcript).join(''); onPart(text) };
+  r.onerror=e=>end(e.error); r.onend=()=>end();
+  const tm=setTimeout(()=>{ try{ r.stop() }catch(e){} },9000);
+  try{ r.start() }catch(e){ end('unavailable') }
+  return r;
+}
+// はなした ことばを かたに いれる
+const clean=t=>String(t).replace(/[。、．，！？!?.,\s　]+$/,'').replace(/^[\s　]+/,'');
+const ACT_END=[['やった','やりました'],['いった','いきました'],['行った','行きました'],['みた','みました'],['見た','見ました'],['たべた','たべました'],['食べた','食べました'],['よんだ','よみました'],['読んだ','読みました'],['かいた','かきました'],['書いた','書きました'],['つくった','つくりました'],['作った','作りました'],['あそんだ','あそびました'],['遊んだ','遊びました'],['うたった','うたいました'],['歌った','歌いました'],['はしった','はしりました'],['走った','走りました'],['とんだ','とびました'],['跳んだ','跳びました'],['きいた','ききました'],['聞いた','聞きました'],['した','しました']];
+function actPolite(t){ t=clean(t); if(/(ました|でした)$/.test(t)) return t; for(const [a,b] of ACT_END) if(t.endsWith(a)) return t.slice(0,-a.length)+b; if(/(でき|き)た$/.test(t)||/[えけげせぜてでねべめれ]た$/.test(t)) return t.slice(0,-1)+'ました'; if(/[たっだ]$/.test(t)) return t; if(t.endsWith('を')) return t+' しました'; return t+'を しました' }
+const FEEL_KANJI={'たのしい':'たのしかった','うれしい':'うれしかった','むずかしい':'むずかしかった','おもしろい':'おもしろかった','くやしい':'くやしかった','楽しかった':'たのしかった','難しかった':'むずかしかった','嬉しかった':'うれしかった','うれしかった':'うれしかった','面白かった':'おもしろかった','悔しかった':'くやしかった','びっくりした':'びっくりした'};
+function matchFeel(t){ let k=clean(t); for(const [a,b] of Object.entries(FEEL_KANJI)) k=k.split(a).join(b); k=k.replace(/[\s　]/g,''); return FEELINGS.find(f=>k.includes(f.w.replace(/\s/g,'')))||null }
+function feelPolite(t){ t=clean(t); if(/(です|ました|でした)$/.test(t)) return t; if(/かった$/.test(t)) return t+'です'; if(/たい$/.test(t)) return t+'と おもいました'; if(/い$/.test(t)) return t.slice(0,-1)+'かったです'; if(/した$/.test(t)) return t.slice(0,-2)+'しました'; if(/[ただ]$/.test(t)) return t; return t+'でした' }
+function whyText(t){ let x=clean(t).replace(/(なので|だから|ので|から)(です)?$/,''); if(x && !/[いたうくすつぬむるぐぶだ]$/.test(x)) x+='だ'; return x }
+const NEXT_END=[['れんしゅうする','れんしゅうしたいです'],['する','したいです'],['やる','やりたいです'],['がんばる','がんばりたいです'],['とぶ','とびたいです'],['いく','いきたいです'],['よむ','よみたいです'],['かく','かきたいです'],['あそぶ','あそびたいです']];
+function nextText(t){ const x=clean(t); if(/たいです$/.test(x)) return x; if(/たい$/.test(x)) return x+'です'; for(const [a,b] of NEXT_END) if(x.endsWith(a)) return x.slice(0,-a.length)+b; return x }
+
+const TEACH_SUBJ=[...Object.keys(SUBJECTS),'やすみじかん','きゅうしょく'];
+const WOW=['へえ〜！','すごい！ にんげんって おもしろい！','そうなんだ〜！','なるほど〜！'];
+const GEN_WHY=['たのしかった','はじめて やった','がんばった','むずかしかった'];
+const GEN_NEXT=['また やりたいです','もっと じょうずに なりたいです','もう いちど ちょうせんしたいです'];
+const TSTEPS=[
+  {k:'act',  q:T=>`${T.s}！ ようかいの せかいには ないなあ。そこで なにを したの？`,
+   cards:T=>SUBJECTS[T.s]||['あそびました','たべました','はなしました','みつけました'],
+   set:(T,v,card)=>{ T.act=card?v:actPolite(v) }},
+  {k:'feel', q:()=>`${one(WOW)} それで、どんな きもち だった？`,
+   cards:()=>FEELINGS.map(f=>f.w),
+   set:(T,v)=>{ const f=matchFeel(v); T.feelObj=f; T.feel=f?f.s:feelPolite(v) }},
+  {k:'why',  q:T=>`${T.feelObj?`「${T.feelObj.w}」`:'そう'} おもったのは、どうして？`,
+   cards:T=>T.feelObj?T.feelObj.r:GEN_WHY,
+   set:(T,v)=>{ T.why=whyText(v) }},
+  {k:'next', q:()=>`${one(WOW)} じゃあ、こんどは どうしたい？`,
+   cards:T=>T.feelObj?T.feelObj.x:GEN_NEXT,
+   set:(T,v)=>{ T.next=nextText(v) }},
+];
+function teachLines(T){
+  return [{r:'act',t:`きょうは、${when(T.s)} ${T.act}。`},{r:'feel',t:`${T.feel}。`},{r:'why',t:`なぜかと いうと、${T.why}からです。`},{r:'next',t:`こんどは、${T.next}。`}];
+}
+function teachBowl(T,cur){
+  const s=(k,label)=>T[k]?esc(T[k]):`<span class="slot ${cur===k?'cur':''}">${label}</span>`;
+  return `<div class="bowl">
+    <p><span class="r-act">きょうは、${esc(when(T.s))} ${s('act','なにを したか')}。</span></p>
+    <p><span class="r-feel">${s('feel','きもち')}。</span></p>
+    <p><span class="r-why">なぜかと いうと、${s('why','わけ')}からです。</span></p>
+    <p><span class="r-next">こんどは、${s('next','したいこと')}。</span></p></div>`;
+}
+function teachStart(){
+  P.teach={}; const t=`${sensei()}！ ようかいの せかいには、がっこうが ないんだ。きょうの こと、おしえて！ なんの じかんの はなし？`;
+  show(`${topBar()}${stageHTML(P.code,t)}<div class="grid four">${TEACH_SUBJ.map((v,i)=>`<button class="card small" type="button" data-i="${i}">${esc(v)}</button>`).join('')}</div>`);
+  bindTop(); bindSay(t); speak(t);
+  on('.card',e=>{ sfx('tap'); P.teach.s=TEACH_SUBJ[+e.currentTarget.dataset.i]; teachStep(0) });
+}
+function teachStep(i){
+  const st=TSTEPS[i], T=P.teach, q=st.q(T);
+  const typeBox = `<div class="typein"><input id="tin" type="text" enterkeyhint="done" autocomplete="off" aria-label="ここに かく"><button class="btn main" id="tok" type="button">OK</button></div><p class="hint">キーボードの 🎤 を おすと、はなした ことばが もじに なるよ</p>`;
+  show(`${topBar()}${stageHTML(P.code,q)}${teachBowl(T,st.k)}
+    ${SR?`<div class="row mid"><button class="btn main mic" id="mic" type="button">🎤 ここを おして おしえる</button></div>
+      <p class="heard" id="heard" aria-live="polite"></p>
+      <div class="row mid" id="confirm" hidden><button class="btn main" id="yes" type="button">⭕ そう！</button><button class="btn" id="retry" type="button">🔁 もういちど</button></div>`
+      :`<div id="typeArea">${typeBox}</div>`}
+    <div class="row mid"><button class="btn" id="useCards" type="button">🃏 カードで おしえる</button>${SR?'<button class="btn" id="useType" type="button">⌨️ もじで</button>':''}</div>
+    <div class="alt" id="alt"></div>`);
+  bindTop(); bindSay(q); speak(q);
+  let heard='';
+  const done=(v,card)=>{ hush(); sfx('step'); st.set(T,v,card); if(i+1<TSTEPS.length) teachStep(i+1); else teachDone() };
+  const bindType=()=>{ const tin=app.querySelector('#tin'); const go=()=>{ const v=tin.value.trim(); if(v) done(v,false) }; app.querySelector('#tok').addEventListener('click',go); tin.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.isComposing) go() }) };
+  if(SR){
+    const mic=app.querySelector('#mic'), h=app.querySelector('#heard'), cf=app.querySelector('#confirm'); let rec=null;
+    const idle=()=>{ mic.classList.remove('on'); mic.textContent='🎤 ここを おして おしえる' };
+    const start=()=>{ hush(); heard=''; cf.hidden=true; h.textContent='きいてるよ… はなしてね'; mic.classList.add('on'); mic.textContent='🎤 きいてるよ（おすと おわる）';
+      rec=listen(t=>{ heard=t; h.textContent=`「${t}」` },(t,err)=>{ idle();
+        if(t){ heard=t; h.textContent=`「${t}」`; cf.hidden=false; speak(`「${t}」だね？`) }
+        else if(err==='not-allowed'||err==='service-not-allowed'||err==='unavailable'){ h.textContent='マイクが つかえないみたい。もじか カードで おしえてね'; app.querySelector('#alt').innerHTML=typeBox; bindType() }
+        else h.textContent='きこえなかった… もういちど おしてね' }) };
+    mic.addEventListener('click',()=>{ if(mic.classList.contains('on')){ try{ rec&&rec.stop() }catch(e){} return } sfx('tap'); start() });
+    on('#yes',()=>done(heard,false));
+    on('#retry',()=>{ sfx('tap'); start() });
+    on('#useType',()=>{ sfx('tap'); app.querySelector('#alt').innerHTML=typeBox; bindType(); app.querySelector('#tin').focus() });
+  } else bindType();
+  on('#useCards',()=>{ sfx('tap'); const items=st.cards(T);
+    app.querySelector('#alt').innerHTML=`<div class="grid">${items.map((v,j)=>`<button class="card small" type="button" data-j="${j}">${esc(v)}${st.k==='why'?'から':''}</button>`).join('')}</div>`;
+    app.querySelectorAll('#alt .card').forEach(b=>b.addEventListener('click',()=>done(items[+b.dataset.j],true))) });
+}
+function teachDone(){
+  const T=P.teach, L=teachLines(T), text=L.map(l=>l.t).join(''); P.feel=T.feelObj;
+  const t=`${sensei()}、おしえてくれて ありがとう！ ノートに まとめたよ。こえに だして よんでみて`;
+  show(`${topBar()}${stageHTML(P.code,t)}${bowlHTML(L)}
+    <div class="row mid"><button class="btn main" id="read" type="button">📣 よんだ！</button></div>
+    <div class="row mid"><button class="link" id="model" type="button">🔊 さきに きいてみる</button> <button class="link" id="redo" type="button">✏️ はじめから おしえなおす</button></div>`);
+  bindTop(); bindSay(t); speak(t);
+  on('#model',()=>speak(text,false));
+  on('#redo',()=>{ sfx('tap'); teachStart() });
+  // うつす ぎょうの かずは、すすんだ ばしょに あわせて ふやす（もり1 → まち4）
+  const k=Math.min(L.length, 1+Math.floor(P.ai/2));
+  on('#read',()=>{ sfx('tap'); writeSeq(L.slice(0,k).map((l,j)=>({say:j?'つぎの ぎょうも うつしてね':'この ぶんを ノートに うつして くれる？', guide:l.t, r:l.r})), ()=>eat(L,'ごちそう',2)) });
 }
 
 /* ================= ずかん ================= */
